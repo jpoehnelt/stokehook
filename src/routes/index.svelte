@@ -91,7 +91,7 @@ import Loader from "../components/Loader.svelte";
           >
         </div>
         <p class="ml-16 text-lg leading-relaxed font-medium text-gray-900">
-          It's free for now
+          It's free
         </p>
       </dt>
       <dd class="mt-2 ml-16 text-base text-gray-500">
