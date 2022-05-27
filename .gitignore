@@ -1,0 +1,12 @@
+.DS_Store
+.firebase
+node_modules
+/build
+/public
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+firebase-debug.log
+.netlify
