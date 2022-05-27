@@ -1,11 +1,11 @@
 import axios from "axios";
 import type { Connection } from "../../../types/strava";
 import type { AxiosResponse } from "axios";
-import { getFirestore } from "../firebaseAdmin";
+import { db } from "../firebaseAdmin";
 import { logger } from "../logger";
 
 export const getToken = async (uid: string): Promise<string> => {
-  const tokenRef = getFirestore()
+  const tokenRef = db
     .collection("users")
     .doc(uid)
     .collection("tokens")
@@ -18,7 +18,7 @@ export const getToken = async (uid: string): Promise<string> => {
   const cushion = 200;
   const now = Date.now() / 1000;
 
-  if (expires_at < (now - cushion)) {
+  if (expires_at < now - cushion) {
     logger.info("refreshing access token for user", { uid, expires_at, now });
     const response = await axios.post<never, AxiosResponse<Connection>>(
       "https://www.strava.com/api/v3/oauth/token",

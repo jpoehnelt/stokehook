@@ -1,4 +1,4 @@
-import { getAuth, getFirestore } from "../../lib/server/firebaseAdmin";
+import { auth, db } from "../../lib/server/firebaseAdmin";
 
 import axios from "axios";
 import type { AxiosResponse, AxiosError } from "axios";
@@ -36,11 +36,11 @@ export const get: RequestHandler = async ({ url }) => {
   }
 
   const uid = String(response.data.athlete.id);
-  const token = await getAuth().createCustomToken(uid);
+  const token = await auth.createCustomToken(uid);
 
   const { athlete, ...stravaTokenData } = response.data;
 
-  const userDoc = getFirestore().collection("users").doc(uid);
+  const userDoc = db.collection("users").doc(uid);
   if (!(await userDoc.get()).exists) {
     await userDoc.create(athlete);
   } else {

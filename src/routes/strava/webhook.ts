@@ -1,8 +1,8 @@
 import type { RequestHandler } from "@sveltejs/kit";
 import axios, { type AxiosResponse } from "axios";
-import { FieldValue } from "firebase-admin/firestore";
+import admin from "firebase-admin";
 import { logger } from "../../lib/server/logger";
-import { getFirestore } from "../../lib/server/firebaseAdmin";
+import { db } from "../../lib/server/firebaseAdmin";
 import { getToken } from "../../lib/server/strava/tokens";
 import type { Activity, Athlete, WebhookRequestBody } from "../../types/strava";
 import type { Webhook } from "../../types/webhook";
@@ -69,19 +69,19 @@ export const post: RequestHandler = async ({ request }) => {
         }
 
         try {
-          const userRef = getFirestore().collection("users").doc(userId);
+          const userRef = db.collection("users").doc(userId);
           const webhookRef = userRef.collection("webhooks").doc(id);
 
-          const stats = { sent: FieldValue.increment(1) };
-          stats[`sent_${aspect_type}`] = FieldValue.increment(1);
-          stats[`sent_${object_type}`] = FieldValue.increment(1);
+          const stats = { sent: admin.firestore.FieldValue.increment(1) };
+          stats[`sent_${aspect_type}`] = admin.firestore.FieldValue.increment(1);
+          stats[`sent_${object_type}`] = admin.firestore.FieldValue.increment(1);
 
           // update global, user, and webhook stats
           await Promise.all([
             webhookRef
               .collection("logs")
               .add({ status: response.status, ...payload }),
-            getFirestore()
+            db
               .collection("meta")
               .doc("stats")
               .set(stats, { merge: true }),
@@ -120,13 +120,15 @@ const getUserWebhooks = async ({
   WebhookRequestBody,
   "aspect_type" | "object_type"
 >): Promise<{ id: string; data: Webhook }[]> => {
-  const ref = getFirestore()
+  const ref = db
     .collection("users")
     .doc(userId)
     .collection("webhooks");
 
   const query = await ref
     .orderBy("url") // required to filter for existence of url field
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     .where("aspect_type", "in", [aspect_type, "any"])
     .where("object_type", "==", object_type)
     .get();

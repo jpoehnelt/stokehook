@@ -1,7 +1,4 @@
-export { getApp } from "firebase-admin/app";
 import admin from "firebase-admin";
-export { getFirestore } from "firebase-admin/firestore";
-export { getAuth } from "firebase-admin/auth";
 
 const serviceAccount = JSON.parse(
   Buffer.from(import.meta.env.VITE_SERVICE_ACCOUNT, "base64").toString()
@@ -10,3 +7,7 @@ const serviceAccount = JSON.parse(
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
 });
+
+export const db = admin.firestore();
+export const app = admin.app();
+export const auth = admin.auth();
