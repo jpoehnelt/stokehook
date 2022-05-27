@@ -57,7 +57,12 @@ export const post: RequestHandler = async ({ request }) => {
           response = await axios.post(url, payload);
         } catch (e) {
           if (axios.isAxiosError(e)) {
-            console.log(e.response?.data);
+            logger.error("failed to send webhook", {
+              data: e.response?.data,
+              status: e.response?.status,
+              url,
+              payload,
+            });
           } else {
             throw e;
           }

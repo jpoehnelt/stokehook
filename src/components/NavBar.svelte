@@ -29,7 +29,6 @@
     unsubscribe = auth.onAuthStateChanged(async (user) => {
       isLoggedIn = user != null;
       userDoc = user ? (await getDoc(getUserRef(user))).data() : null;
-      console.log(userDoc);
     });
   });
 
