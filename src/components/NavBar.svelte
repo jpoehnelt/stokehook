@@ -78,7 +78,7 @@
               ><img
                 class="rounded-full w-12 h-12 border-2 border-gray-300 border-opacity-75"
                 alt="Profile"
-                src={userDoc?.profile_medium ?? ""}
+                src={userDoc?.profile ?? ""}
               />
             </button>
             <!-- Dropdown menu -->
