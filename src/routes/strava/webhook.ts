@@ -10,7 +10,7 @@ import type { Webhook } from "../../types/webhook";
 export const post: RequestHandler = async ({ request }) => {
   const data = (await request.json()) as WebhookRequestBody;
 
-  logger.info("webhook request", data);
+  logger.info("webhook request", {data, headers: request.headers});
 
   const { owner_id, object_id, aspect_type, object_type } = data;
   const userId = String(owner_id);
@@ -73,18 +73,17 @@ export const post: RequestHandler = async ({ request }) => {
           const webhookRef = userRef.collection("webhooks").doc(id);
 
           const stats = { sent: admin.firestore.FieldValue.increment(1) };
-          stats[`sent_${aspect_type}`] = admin.firestore.FieldValue.increment(1);
-          stats[`sent_${object_type}`] = admin.firestore.FieldValue.increment(1);
+          stats[`sent_${aspect_type}`] =
+            admin.firestore.FieldValue.increment(1);
+          stats[`sent_${object_type}`] =
+            admin.firestore.FieldValue.increment(1);
 
           // update global, user, and webhook stats
           await Promise.all([
             webhookRef
               .collection("logs")
               .add({ status: response.status, ...payload }),
-            db
-              .collection("meta")
-              .doc("stats")
-              .set(stats, { merge: true }),
+            db.collection("meta").doc("stats").set(stats, { merge: true }),
             userRef.set(stats, { merge: true }),
             webhookRef.set(stats, { merge: true }),
           ]);
@@ -120,10 +119,7 @@ const getUserWebhooks = async ({
   WebhookRequestBody,
   "aspect_type" | "object_type"
 >): Promise<{ id: string; data: Webhook }[]> => {
-  const ref = db
-    .collection("users")
-    .doc(userId)
-    .collection("webhooks");
+  const ref = db.collection("users").doc(userId).collection("webhooks");
 
   const query = await ref
     .orderBy("url") // required to filter for existence of url field
