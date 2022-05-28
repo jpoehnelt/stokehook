@@ -93,7 +93,7 @@ select {
 }
 
 main a {
-  @apply text-blue-500 hover:text-blue-600;
+  @apply text-blue-700 hover:text-blue-800;
 }
 
 input.invalid {

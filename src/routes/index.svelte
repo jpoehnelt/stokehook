@@ -175,7 +175,7 @@ import Loader from "../components/Loader.svelte";
   </div>
 </div>
 <div class="mt-4 pt-12 border-t text-sm">
-  <p class="mx-auto sm:max-w-xl text-center">
+  <p class="mx-auto sm:max-w-xl text-center pb-4">
     &copy; <a href="https://justin.poehnelt.com">Justin Poehnelt</a>
   </p>
 </div>

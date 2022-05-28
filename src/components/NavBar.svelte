@@ -45,7 +45,7 @@
 <nav class="relative py-3 mb-6 text-2xl tracking-wide bg-orange-600 text-white">
   <Container>
     <div class="flex flex-row justify-between">
-      <a href="/" class="text-3xl mr-4 py-2 whitespace-no-wrap flex items-center justify-center"
+      <a href="/" class="text-sm sm:text-3xl mr-4 py-2 whitespace-no-wrap flex items-center justify-center"
         ><svg
           class="h-8 w-8 fill-white mr-2"
           xmlns="http://www.w3.org/2000/svg"
