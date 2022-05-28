@@ -32,7 +32,7 @@ import Loader from "../components/Loader.svelte";
     StokeHook provides a service for sending Strava webhooks to your favorite
     service or tool.
   </p>
-  <div class="mt-5 sm:mt-8 sm:flex sm:justify-center md:justify-start">
+  <div class="mt-12 sm:flex sm:justify-center md:justify-start">
     <Login
       className="btn btn-primary !text-4xl !px-8 !py-4 !w-full"
       text={"Get started"}
@@ -164,7 +164,7 @@ import Loader from "../components/Loader.svelte";
     to fix bugs and respond to feature requests. You can file issues on
     <a class="underline" href="https://github.com/jpoehnelt/stokehook/issues"
       >GitHub</a
-    >.
+    >. This application is not affiliated with Strava.
   </p>
 </div>
 
