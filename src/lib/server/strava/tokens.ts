@@ -23,8 +23,8 @@ export const getToken = async (uid: string): Promise<string> => {
     const response = await axios.post<never, AxiosResponse<Connection>>(
       "https://www.strava.com/api/v3/oauth/token",
       {
-        client_id: import.meta.env.STRAVA_CLIENT_ID,
-        client_secret: import.meta.env.STRAVA_CLIENT_SECRET,
+        client_id: import.meta.env.VITE_STRAVA_CLIENT_ID,
+        client_secret: import.meta.env.VITE_STRAVA_CLIENT_SECRET,
         refresh_token,
         grant_type: "refresh_token",
       }
