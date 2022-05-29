@@ -9,10 +9,8 @@ import type { Webhook } from "../../types/webhook";
 
 export const post: RequestHandler = async ({ request }) => {
   const data = (await request.json()) as WebhookRequestBody;
-  const headers = {};
-  request.headers.forEach((value, key) => headers[key] = value);
 
-  logger.info("webhook request", { data, headers });
+  logger.info("webhook request", { data });
 
   const { owner_id, object_id, aspect_type, object_type } = data;
   const userId = String(owner_id);
@@ -46,6 +44,8 @@ export const post: RequestHandler = async ({ request }) => {
         })
       ).data;
     }
+    
+    logger.info("webhooks", { webhooks });
 
     for (const {
       id,
