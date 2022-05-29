@@ -34,7 +34,14 @@ export const post: RequestHandler = async ({ request }) => {
     };
 
     if (aspect_type === "create" || aspect_type === "update") {
-      const access_token = await getToken(userId);
+      let access_token;
+
+      try {
+        access_token = await getToken(userId);
+      } catch (error) {
+        logger.error("failed to get access token", { userId, error });
+        throw error;
+      }
 
       payload.data = (
         await axios.get(objectUrl, {
@@ -44,7 +51,7 @@ export const post: RequestHandler = async ({ request }) => {
         })
       ).data;
     }
-    
+
     logger.info("webhooks", { webhooks });
 
     for (const {
