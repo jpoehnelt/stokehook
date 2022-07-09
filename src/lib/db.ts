@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { app } from "./firebase";
 import { collection, doc, getFirestore } from "firebase/firestore";
 import type { User } from "firebase/auth";
