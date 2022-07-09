@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { getStatsRef, getUserRef } from "../../lib/db";
+  import { getUserRef } from "../../lib/db";
   import { getContext, onDestroy, onMount } from "svelte";
   import { auth } from "../../lib/auth";
   import type { FirestoreStoreWritable, UserData } from "../../types";
   import { deleteDoc, updateDoc } from "firebase/firestore";
-  import FirestoreStoreContext from "../../components/FirestoreStoreContext.svelte";
   import type { Unsubscriber } from "svelte/store";
 
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const user = auth.currentUser!;
   const userRef = getUserRef(user);
 
@@ -16,10 +16,6 @@
 
   let storeUnsubscriber: Unsubscriber;
   const defaults: UserData = {};
-
-  const onChange = () => {
-    updateDoc(userRef, { ...settings });
-  };
 
   let settings: UserData = { ...defaults };
   onMount(() => {

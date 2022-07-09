@@ -2,10 +2,11 @@
   import { getWebhooksRef } from "../lib/db";
   import { deleteDoc, doc, updateDoc } from "firebase/firestore";
   import Loader from "./Loader.svelte";
+  import type { Webhook } from "../types/webhook";
 
-  export let webhook;
+  export let webhook: { id: string; data: Webhook };
   let urlInput: HTMLInputElement;
-  let urlValid: boolean = true;
+  let urlValid = true;
   let saved = false;
 
   // TODO made this into a anonymous function since there were issues with svelte using the same ref for operations???
@@ -16,7 +17,8 @@
 
     if (urlValid) {
       saved = true;
-      await updateDoc(webhookRef(), webhook.data);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      await updateDoc(webhookRef(), webhook.data as { [x: string]: any });
       setTimeout(() => (saved = false), 1000);
     }
   };

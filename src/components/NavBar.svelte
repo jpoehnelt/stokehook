@@ -5,6 +5,7 @@
   import { getDoc } from "firebase/firestore";
   import { auth } from "../lib/auth";
   import { getUserRef } from "../lib/db";
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   import OutClick from "svelte-outclick";
   import Login from "./Login.svelte";

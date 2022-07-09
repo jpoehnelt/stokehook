@@ -34,7 +34,7 @@ export const post: RequestHandler = async ({ request }) => {
     };
 
     if (aspect_type === "create" || aspect_type === "update") {
-      let access_token;
+      let access_token: string;
 
       try {
         access_token = await getToken(userId);
