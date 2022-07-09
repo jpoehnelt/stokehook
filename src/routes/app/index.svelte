@@ -42,9 +42,7 @@
 {/each}
 
 <div class="mb-4 pb-4 border-b flex justify-center">
-  <button class="btn btn-primary" on:click={onAdd}
-    >Add Webhook</button
-  >
+  <button class="btn btn-primary" on:click={onAdd}>Add Webhook</button>
 </div>
 
 <p class="my-4">

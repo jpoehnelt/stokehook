@@ -87,7 +87,8 @@ select {
   @apply grow;
 }
 
-.form-group input, .form-group select {
+.form-group input,
+.form-group select {
   @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
   @apply max-w-md;
 }

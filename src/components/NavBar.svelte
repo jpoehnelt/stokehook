@@ -45,7 +45,9 @@
 <nav class="relative py-3 mb-6 text-2xl tracking-wide bg-orange-600 text-white">
   <Container>
     <div class="flex flex-row justify-between">
-      <a href="/" class="text-sm sm:text-3xl mr-4 py-2 whitespace-no-wrap flex items-center justify-center"
+      <a
+        href="/"
+        class="text-sm sm:text-3xl mr-4 py-2 whitespace-no-wrap flex items-center justify-center"
         ><svg
           class="h-8 w-8 fill-white mr-2"
           xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +68,8 @@
           /><path
             d="M167.707 187.21h-45.77c-4.387 18.044-13.863 32.612-30.19 41.876c-12.693 7.2-26.373 9.641-40.933 7.29c-26.808-4.323-48.728-28.456-50.658-55.63c-2.184-30.784 18.975-58.147 47.178-64.293c1.947 7.071 3.915 14.21 5.862 21.264c-25.876 13.202-34.832 29.836-27.59 50.636c6.375 18.304 24.484 28.337 44.147 24.457c20.08-3.962 30.204-20.65 28.968-47.432c19.036 0 38.088-.197 57.126.097c7.434.117 13.173-.654 18.773-7.208c9.22-10.784 26.191-9.811 36.121.374c10.148 10.409 9.662 27.157-1.077 37.127c-10.361 9.62-26.73 9.106-36.424-1.26c-1.992-2.136-3.562-4.673-5.533-7.298Z"
           /></svg
-        > StokeHook <span class="text-xs mx-2 font-mono">(beta)</span></a
+        >
+        StokeHook <span class="text-xs mx-2 font-mono">(beta)</span></a
       >
       <ul class="flex list-none ml-auto items-center">
         <li class="relative">

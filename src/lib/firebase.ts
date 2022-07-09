@@ -7,7 +7,7 @@ const firebaseConfig = {
   storageBucket: "stokehook.appspot.com",
   messagingSenderId: "3582192981",
   appId: "1:3582192981:web:a6728e84bc0286986bd3dc",
-  measurementId: "G-HDZ1Q0NSTL"
-};  
+  measurementId: "G-HDZ1Q0NSTL",
+};
 
 export const app = initializeApp(firebaseConfig);

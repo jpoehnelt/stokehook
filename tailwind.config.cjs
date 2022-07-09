@@ -13,9 +13,9 @@ module.exports = {
         },
       },
       lineHeight: {
-        'extra-loose': '2.5',
-        '12': '3rem',
-      }
+        "extra-loose": "2.5",
+        12: "3rem",
+      },
     },
   },
   plugins: [],

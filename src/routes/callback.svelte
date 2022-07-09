@@ -7,7 +7,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const state = urlParams.get("state");
     const { token, redirect, close } = JSON.parse(decodeURIComponent(state));
-    console.log({ token, redirect, close })
+    console.log({ token, redirect, close });
 
     await signInWithCustomToken(getAuth(), token);
     if (close) {

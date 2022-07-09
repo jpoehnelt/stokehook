@@ -13,7 +13,7 @@
 
   const onChange = async () => {
     urlValid = urlInput.checkValidity();
-    
+
     if (urlValid) {
       saved = true;
       await updateDoc(webhookRef(), webhook.data);

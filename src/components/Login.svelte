@@ -18,9 +18,7 @@
   };
 
   export let text = "Sign in with Strava";
-  export let className = "btn btn-primary"
+  export let className = "btn btn-primary";
 </script>
 
-<button class={className} on:click={connectStrava}
-  >{text}</button
->
+<button class={className} on:click={connectStrava}>{text}</button>
