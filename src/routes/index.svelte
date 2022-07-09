@@ -9,7 +9,7 @@
   import Loader from "../components/Loader.svelte";
 
   let stats: {
-    sent?: Number;
+    sent?: number;
   } = {};
 
   onMount(() => {

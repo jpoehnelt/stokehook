@@ -18,7 +18,7 @@ export interface Athlete {
   athlete_type: number;
   badge_type_id: number;
   city: string;
-  clubs: any[];
+  clubs: unknown[];
   country: string;
   created_at: Date;
   date_preference: string;
@@ -73,7 +73,7 @@ export interface Activity {
   pr_count: number;
   private: boolean;
   resource_state: ResourceState;
-  segment_efforts: any[];
+  segment_efforts: unknown[];
   start_date_local: string;
   start_date: string;
   timezone: string;

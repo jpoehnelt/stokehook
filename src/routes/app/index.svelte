@@ -1,21 +1,12 @@
 <script lang="ts">
-  import Webhook from "../../components/Webhook.svelte";
-  import { getWebhooksRef, getUserRef } from "../../lib/db";
-  import { getContext, onDestroy, onMount } from "svelte";
-  import { auth } from "../../lib/auth";
-  import type { FirestoreStoreWritable, UserData } from "../../types";
-  import {
-    updateDoc,
-    collection,
-    onSnapshot,
-    addDoc,
-    type Unsubscribe,
-  } from "firebase/firestore";
-  import FirestoreStoreContext from "../../components/FirestoreStoreContext.svelte";
+  import WebhookComponent from "../../components/Webhook.svelte";
+  import { getWebhooksRef } from "../../lib/db";
+  import { onDestroy, onMount } from "svelte";
+  import { onSnapshot, addDoc, type Unsubscribe } from "firebase/firestore";
   import { writable } from "svelte/store";
+  import type { Webhook } from "../../types/webhook";
 
-  const user = auth.currentUser!;
-  const webhooks = writable<any[]>([]);
+  const webhooks = writable<{ id: string; data: Webhook }[]>([]);
 
   let webhooksSnapshotUnsubscribe: Unsubscribe;
 
@@ -26,7 +17,10 @@
   onMount(() => {
     webhooksSnapshotUnsubscribe = onSnapshot(getWebhooksRef(), (snapshot) => {
       webhooks.set(
-        snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data() as Webhook,
+        }))
       );
     });
   });
@@ -38,7 +32,7 @@
 <h1>Webhooks</h1>
 
 {#each $webhooks as webhook}
-  <div class="pb-4 mb-4 border-b"><Webhook {webhook} /></div>
+  <div class="pb-4 mb-4 border-b"><WebhookComponent {webhook} /></div>
 {/each}
 
 <div class="mb-4 pb-4 border-b flex justify-center">
