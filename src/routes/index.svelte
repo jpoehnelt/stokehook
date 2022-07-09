@@ -6,7 +6,7 @@
   import { onMount } from "svelte";
 
   import Login from "../components/Login.svelte";
-import Loader from "../components/Loader.svelte";
+  import Loader from "../components/Loader.svelte";
 
   let stats: {
     sent?: Number;
@@ -95,7 +95,10 @@ import Loader from "../components/Loader.svelte";
         </p>
       </dt>
       <dd class="mt-2 ml-16 text-base text-gray-500">
-        If this is useful, please support me on <a href="https://patreon.com/jpoehnelt">Patreon</a> or <a href="https://opencollective.com/jpoehnelt">OpenCollective</a>.
+        If this is useful, please support me on <a
+          href="https://patreon.com/jpoehnelt">Patreon</a
+        >
+        or <a href="https://opencollective.com/jpoehnelt">OpenCollective</a>.
       </dd>
     </div>
 
@@ -169,9 +172,17 @@ import Loader from "../components/Loader.svelte";
 </div>
 
 <div class="mt-12 pt-4 border-t">
-  <div class="mx-auto w-fit p-8 rounded-md flex gap-8 items-center">
-    <div class="text-9xl text-purple-600 font-mono h-32 flex items-center"><Loader condition={Boolean(stats.sent)} size={"64"} color={"#9333ea"}>{stats.sent}</Loader></div>
-    <div class="w-48 tracking-wide text-gray-600 text-3xl">Webhooks sent</div>
+  <div
+    class="text-6xl mx-auto w-fit p-8 rounded-md flex gap-8 items-center justify-center flex-wrap"
+  >
+    <div class="sm:text-9xl text-purple-600 font-mono h-32 flex items-center">
+      <Loader condition={Boolean(stats.sent)} size={"64"} color={"#9333ea"}
+        >{stats.sent}</Loader
+      >
+    </div>
+    <div class="tracking-wide text-gray-600 text-center whitespace-nowrap">
+      Webhooks sent
+    </div>
   </div>
 </div>
 <div class="mt-4 pt-12 border-t text-sm">
