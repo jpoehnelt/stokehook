@@ -37,7 +37,7 @@
     "axios": "^0.27.2",
     "firebase": "^9.9.0",
     "firebase-admin": "^10.2.0",
-    "html-minifier-terser": "^7.0.0-alpha.2",
+    "html-minifier-terser": "^7.0.0-beta.0",
     "svelte-loading-spinners": "^0.1.7",
     "svelte-outclick": "^3.1.0",
     "winston": "^3.8.1"
