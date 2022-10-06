@@ -34,7 +34,7 @@
   },
   "type": "module",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "firebase": "^9.9.0",
     "firebase-admin": "^10.2.0",
     "html-minifier-terser": "^7.0.0",
